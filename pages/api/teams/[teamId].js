@@ -2,13 +2,12 @@ import { connectToDatabase } from "../../../util/mongodb";
 
 export default async (req, res) => {
   const { db } = await connectToDatabase();
+  const { teamId } = req.query;
 
-  const movies = await db
-    .collection("movies")
-    .find({})
-    .sort({ metacritic: -1 })
-    .limit(20)
+  const team = await db
+    .collection("teams")
+    .find({"id": parseInt(teamId)})
     .toArray();
 
-  res.json(movies);
+  res.json(team[0]);
 };
