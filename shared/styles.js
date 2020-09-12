@@ -65,25 +65,6 @@ export const Animated = styled('div')`
   }
   animation: ${(props) => props.animation} 0.2s infinite ease-in-out alternate;
 `
-
-export const Logo = styled('img')`
-  height: 100px;
-  width: 100px;
-  border-radius: 100%;
-  border: .3rem solid #e3e3e3;
-`
-
-const leaderCard = css`
-  box-shadow: .15rem .15rem .2rem .2rem #e3e3e3;
-  border-radius: .5rem;
-  margin: 0 .5rem;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 0;
-`
-
 export const Leaders = styled('div')`
   display: flex;
   justify-content: space-between;
@@ -91,36 +72,9 @@ export const Leaders = styled('div')`
   max-width: 60%;
 `
 
-export const FirstPlace = styled('div')`
-  ${leaderCard};
-  flex-grow: 4;
-  order: 2;
-`
-export const SecondPlace = styled('div')`
-  ${leaderCard};
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  flex-grow: 3;
-  order: 1;
-`
-export const ThirdPlace = styled('div')`
-  ${leaderCard};
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  flex-grow: 3;
-  order: 3;
-`
-const leaderTitle = css`
-  font-family: 'Patua One', sans-serif;
-  margin: 0;
-  font-weight: 800;
-`
-
-export const LeaderTitlePrimary = styled('h3')`
-  ${leaderTitle};
-  font-size: 1.5rem;
-`
-export const LeaderTitleSecondary = styled('h3')`
-  ${leaderTitle};
-  font-size: 1.25rem;
+export const Logo = styled('img')`
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  border: .3rem solid #84e4f9;
 `
