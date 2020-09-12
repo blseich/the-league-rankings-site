@@ -64,9 +64,15 @@ const card = css`
 
 const teamName = css`
     font-family: 'Patua One', sans-serif;
-    font-size: 1.25rem;
     font-weight: 800;
     margin: 0;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        margin: 0 auto;
+    }
 `;
 
 const logo = css`
@@ -74,6 +80,7 @@ const logo = css`
     border-radius: 100%;
     height: 4.5rem;
     width: 4.5rem;
+    order: 2;
 `;
 
 const placement = css`
@@ -86,6 +93,7 @@ const placement = css`
     padding: .1rem;
     text-align: center;
     width: 20%;
+    order: 3;
 `;
 
 const stats = css`
@@ -96,6 +104,7 @@ const stats = css`
     height: 2rem;
     display: flex;
     margin-top: auto;
+    order: 99;
 `;
 
 const stat = css`
@@ -146,10 +155,12 @@ const parsedPlace = {
 
 const LeaderCard = ({ team, place }) => (
     <div css={[card, stylesForPlace[place]]}>
-        <h3 css={teamName} className={"primary"}>{team.location}</h3>
-        <h3 css={teamName} className={"secondary"}>{team.nickname}</h3>
-        <img css={logo} src={team.logo} />
         <div css={placement} className={"place"}>{parsedPlace[place]}</div>
+        <img css={logo} src={team.logo} />
+        <div css={teamName}>   
+            <h3 className={"primary"}>{team.location}</h3>
+            <h3 className={"secondary"}>{team.nickname}</h3>
+        </div>
         <div css={stats} className={"stats"}>
             <div css={[stat, leftStat]}>
                 <h4>Win / Loss</h4>
