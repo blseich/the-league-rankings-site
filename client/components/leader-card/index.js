@@ -72,8 +72,8 @@ const teamName = css`
 const logo = css`
     border: .3rem solid #b0e4f9;
     border-radius: 100%;
-    height: 100px;
-    width: 100px;
+    height: 4.5rem;
+    width: 4.5rem;
 `;
 
 const placement = css`

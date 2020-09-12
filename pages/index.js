@@ -1,6 +1,7 @@
-import { Combined, Logo, Leaders } from '../shared/styles';
+import { Combined, Leaders, Rest } from '../shared/styles';
 import { connectToDatabase } from '../util/mongodb';
 import LeaderCard from '../client/components/leader-card';
+import RegularCard from '../client/components/regular-card';
 
 export default function Home({ teams }) {
   const [
@@ -17,13 +18,11 @@ export default function Home({ teams }) {
         <LeaderCard team={second} place={"second"} />
         <LeaderCard team={third} place={"third"} />
       </Leaders>
-      {rest.map(team => (
-        <Combined className="team" id={team.id}>
-          <h3>{team.location}</h3>
-          <h3>{team.nickname}</h3>
-          <Logo src={team.logo} />
-        </Combined>
-      ))}
+      <Rest>
+        {rest.map((team, i) => (
+          <RegularCard team={team} place={i+4} />
+        ))}
+      </Rest>
     </div>
   )
 }

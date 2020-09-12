@@ -72,6 +72,11 @@ export const Leaders = styled('div')`
   max-width: 60%;
 `
 
+export const Rest = styled('div')`
+  max-width: 50%;
+  margin: 2rem auto 0;
+`;
+
 export const Logo = styled('img')`
   height: 100px;
   width: 100px;
