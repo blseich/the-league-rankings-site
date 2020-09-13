@@ -78,6 +78,7 @@ export const Rest = styled('div')`
   padding: 0 5%;
   max-width: 1028px;
   margin: 2rem auto 0;
+  box-sizing: border-box;
 `;
 
 export const Logo = styled('img')`
