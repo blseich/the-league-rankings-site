@@ -1,7 +1,10 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
 import { Combined, Leaders, Rest } from '../shared/styles';
 import { connectToDatabase } from '../util/mongodb';
 import LeaderCard from '../client/components/leader-card';
 import RegularCard from '../client/components/regular-card';
+import TeamCard from '../client/components/team-card';
 
 export default function Home({ teams }) {
   const [
@@ -14,13 +17,16 @@ export default function Home({ teams }) {
   return (
     <div className="container">
       <Leaders>
-        <LeaderCard team={first} place={"first"} />
+        <TeamCard team={first} place={1} />
+        <TeamCard team={second} place={2} />
+        <TeamCard team={third} place={3} />
+        {/* <LeaderCard team={first} place={"first"} />
         <LeaderCard team={second} place={"second"} />
-        <LeaderCard team={third} place={"third"} />
+        <LeaderCard team={third} place={"third"} /> */}
       </Leaders>
       <Rest>
         {rest.map((team, i) => (
-          <RegularCard team={team} place={i+4} />
+          <TeamCard team={team} place={i+4} />
         ))}
       </Rest>
     </div>

@@ -11,7 +11,9 @@ export const globalStyles = (
         background: #f3f3f3;
         min-height: 100%;
         font-family: Helvetica, Arial, sans-serif;
-        font-size: 24px;
+        @media (min-width: 1028px) {
+          font-size: 24px;
+        }
       }
     `}
   />
@@ -66,10 +68,14 @@ export const Animated = styled('div')`
   animation: ${(props) => props.animation} 0.2s infinite ease-in-out alternate;
 `
 export const Leaders = styled('div')`
-  display: flex;
-  justify-content: space-between;
+  @media (min-width: 1028px) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 0 0;
+  }
+  padding: 0 5%;
   margin: auto;
-  width: 100%;
   max-width: 1028px;
 `
 
@@ -77,7 +83,7 @@ export const Rest = styled('div')`
   width: 100%;
   padding: 0 5%;
   max-width: 1028px;
-  margin: 2rem auto 0;
+  margin: 0 auto;
   box-sizing: border-box;
 `;
 
