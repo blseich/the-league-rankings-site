@@ -69,11 +69,14 @@ export const Leaders = styled('div')`
   display: flex;
   justify-content: space-between;
   margin: auto;
-  max-width: 60%;
+  width: 100%;
+  max-width: 1028px;
 `
 
 export const Rest = styled('div')`
-  max-width: 50%;
+  width: 100%;
+  padding: 0 5%;
+  max-width: 1028px;
   margin: 2rem auto 0;
 `;
 

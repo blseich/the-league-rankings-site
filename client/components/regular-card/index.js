@@ -98,7 +98,7 @@ const RegularCard = ({ team, place }) => (
             </div>
             <div css={stat}>
                 <h4>Delta</h4>
-                <p>🡑3</p>
+                <p>&#8595;3</p>
             </div>
         </div>
     </div>

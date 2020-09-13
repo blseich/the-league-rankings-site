@@ -92,7 +92,7 @@ const placement = css`
     margin: auto;
     padding: .1rem;
     text-align: center;
-    width: 20%;
+    width: 33%;
     order: 3;
 `;
 
@@ -172,7 +172,7 @@ const LeaderCard = ({ team, place }) => (
             </div>
             <div css={[stat, rightStat]}>
                 <h4>Delta</h4>
-                <p>🡑3</p>
+                <p>&#8593;3</p>
             </div>
         </div>
     </div>
