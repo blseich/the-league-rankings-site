@@ -2,8 +2,6 @@
 import { jsx, css } from '@emotion/core'
 import { Combined, Leaders, Rest } from '../shared/styles';
 import { connectToDatabase } from '../util/mongodb';
-import LeaderCard from '../client/components/leader-card';
-import RegularCard from '../client/components/regular-card';
 import TeamCard from '../client/components/team-card';
 
 export default function Home({ teams }) {
