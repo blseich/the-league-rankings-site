@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { jsx, css } from '@emotion/core'
 
 const teamCard = css`
@@ -228,8 +228,8 @@ const parsePlace = place => {
     }
 }
 
-const TeamCard = ({ team, place }) => (
-    <div css={[teamCard, (place < 4 ? [leaderCard, placeStyles[`${place}`]] : '')]}>
+const TeamCard = ({ team, place, callback}) => (
+    <div css={[teamCard, (place < 4 ? [leaderCard, placeStyles[`${place}`]] : '')]} onClick={() => callback(team)}>
         <div className={'placement'}>{parsePlace(place)}</div>
         <img className={'logo'} src={team.logo} />
         <div className={'team-name'}>
@@ -247,7 +247,7 @@ const TeamCard = ({ team, place }) => (
             </div>
             <div className={'stat'}>
                 <h4 className={'stat--header'}>Delta</h4>
-                <p className={'stat--value'}>&#8595;3</p>
+                <p className={'stat--value'}>&#8679;3</p>
             </div>
         </div>
     </div>

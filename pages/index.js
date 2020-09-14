@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { useState } from 'react';
 import { jsx, css } from '@emotion/core'
 import { Combined, Leaders, Rest } from '../shared/styles';
 import { connectToDatabase } from '../util/mongodb';
@@ -12,21 +13,33 @@ export default function Home({ teams }) {
     ...rest
   ] = teams;
 
+  const [selectedTeam, setSelectedTeam] = useState();
+
   return (
     <div className="container">
-      <Leaders>
-        <TeamCard team={first} place={1} />
-        <TeamCard team={second} place={2} />
-        <TeamCard team={third} place={3} />
-        {/* <LeaderCard team={first} place={"first"} />
-        <LeaderCard team={second} place={"second"} />
-        <LeaderCard team={third} place={"third"} /> */}
-      </Leaders>
-      <Rest>
-        {rest.map((team, i) => (
-          <TeamCard team={team} place={i+4} />
-        ))}
-      </Rest>
+      <div css={css`
+        max-width: ${selectedTeam !== undefined ? '30%' : '100%'};
+        transition-duration: .3s;
+        transition-property: max-width;
+      `}>
+        <Leaders>
+          <TeamCard team={first} place={1} />
+          <TeamCard team={second} place={2} />
+          <TeamCard team={third} place={3} />
+          {/* <LeaderCard team={first} place={"first"} />
+          <LeaderCard team={second} place={"second"} />
+          <LeaderCard team={third} place={"third"} /> */}
+        </Leaders>
+        <Rest>
+          {rest.map((team, i) => (
+            <TeamCard team={team} place={i+4} callback={team => {
+              setSelectedTeam(prevTeam => {
+                prevTeam === team ? setSelectedTeam(undefined) : setSelectedTeam(team)
+              });
+            }}/>
+          ))}
+        </Rest>
+      </div>
     </div>
   )
 }
