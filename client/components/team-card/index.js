@@ -10,7 +10,17 @@ const teamCard = css`
     display: flex;
     margin-bottom: .5rem;
     padding: .5rem;
+    transition-duration: .3s;
+    transition-property: transform;
+    cursor: pointer;
     
+    @media (min-width: 1028px) {
+        &:hover {
+            transform: scale(1.05);
+            
+        }
+    }
+
     .logo {
         border: .15rem solid #b0e4f9;
         border-radius: 100%;
