@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React, { useCallback } from 'react';
 import { jsx, css } from '@emotion/core'
 
 const teamCard = css`
@@ -37,19 +36,12 @@ const teamCard = css`
         margin: auto 0 auto 0;
         padding: .1rem;
         text-align: center;
-        width: 8.125%;
         background: #b0e4f9;
         font-size: .75rem;
-
-
-        @media (min-width: 1028px) {
-            font-size: 1rem;
-        }
     }
 
     .stats {
         align-self: flex-end;
-        display: flex;
         width: 50%;
         margin: auto 0 auto auto;
 
@@ -228,15 +220,20 @@ const parsePlace = place => {
     }
 }
 
-const TeamCard = ({ team, place, callback}) => (
+const TeamCard = ({ team, selectedTeam, place, callback}) => (
     <div css={[teamCard, (place < 4 ? [leaderCard, placeStyles[`${place}`]] : '')]} onClick={() => callback(team)}>
-        <div className={'placement'}>{parsePlace(place)}</div>
+        <div className={'placement'} css={css`
+            width: ${selectedTeam !== undefined ? '12.5%' : '6.25%'};
+        `}>{parsePlace(place)}</div>
         <img className={'logo'} src={team.logo} />
         <div className={'team-name'}>
             <h3 className={'primary'}>{team.location}</h3>
             <h3 className={'secondary'}>{team.nickname}</h3>
         </div>
-        <div className={'stats'}>
+        <div className={'stats'} css={css`
+            display: ${selectedTeam !== undefined ? 'none' : 'flex'};
+        `}>
+            {selectedTeam}
             <div className={'stat'}>
                 <h4 className={'stat--header'}>Win / Loss</h4>
                 <p className={'stat--value'}>{team.record.overall.wins} - {team.record.overall.losses}</p>

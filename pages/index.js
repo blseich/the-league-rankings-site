@@ -26,13 +26,10 @@ export default function Home({ teams }) {
           <TeamCard team={first} place={1} />
           <TeamCard team={second} place={2} />
           <TeamCard team={third} place={3} />
-          {/* <LeaderCard team={first} place={"first"} />
-          <LeaderCard team={second} place={"second"} />
-          <LeaderCard team={third} place={"third"} /> */}
         </Leaders>
         <Rest>
           {rest.map((team, i) => (
-            <TeamCard team={team} place={i+4} callback={team => {
+            <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} place={i+4} callback={team => {
               setSelectedTeam(prevTeam => {
                 prevTeam === team ? setSelectedTeam(undefined) : setSelectedTeam(team)
               });
