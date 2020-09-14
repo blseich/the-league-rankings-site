@@ -11,29 +11,31 @@ export default function Home({ teams }) {
     second,
     third,
     ...rest
-  ] = teams;
+  ] = teams.map((team, i) => Object.assign(team, { ranking: i+1 }));
 
   const [selectedTeam, setSelectedTeam] = useState();
+  const toggleSelectedTeam = team => {
+    setSelectedTeam(prevTeam => {
+      prevTeam === team ? setSelectedTeam(undefined) : setSelectedTeam(team)
+    });
+  };
 
   return (
     <div className="container">
       <div css={css`
-        max-width: ${selectedTeam !== undefined ? '30%' : '100%'};
+        max-width: ${selectedTeam ? '30%' : '100%'};
         transition-duration: .3s;
         transition-property: max-width;
+        transition-timing-function: ease-in-out;
       `}>
         <Leaders>
-          <TeamCard team={first} place={1} />
-          <TeamCard team={second} place={2} />
-          <TeamCard team={third} place={3} />
+          <TeamCard team={first} />
+          <TeamCard team={second} />
+          <TeamCard team={third} />
         </Leaders>
         <Rest>
-          {rest.map((team, i) => (
-            <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} place={i+4} callback={team => {
-              setSelectedTeam(prevTeam => {
-                prevTeam === team ? setSelectedTeam(undefined) : setSelectedTeam(team)
-              });
-            }}/>
+          {rest.map(team => (
+            <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} callback={toggleSelectedTeam}/>
           ))}
         </Rest>
       </div>

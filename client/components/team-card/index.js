@@ -220,11 +220,13 @@ const parsePlace = place => {
     }
 }
 
-const TeamCard = ({ team, selectedTeam, place, callback}) => (
-    <div css={[teamCard, (place < 4 ? [leaderCard, placeStyles[`${place}`]] : '')]} onClick={() => callback(team)}>
+const TeamCard = ({ team, selectedTeam, callback}) => (
+    <div css={[teamCard, (team.ranking < 4 ? [leaderCard, placeStyles[`${team.ranking}`]] : '')]} onClick={() => callback(team)}>
         <div className={'placement'} css={css`
             width: ${selectedTeam !== undefined ? '12.5%' : '6.25%'};
-        `}>{parsePlace(place)}</div>
+            transition-property: width;
+            transition-duration: .3s;
+        `}>{parsePlace(team.ranking)}</div>
         <img className={'logo'} src={team.logo} />
         <div className={'team-name'}>
             <h3 className={'primary'}>{team.location}</h3>
