@@ -176,7 +176,8 @@ const secondStyles = css`
         order: 1;
 
         .placement {
-            margin: .5rem auto .5rem;
+           margin-top: .5rem;
+           margin-bottom: .5rem;
         }
     }
 `;
@@ -192,7 +193,8 @@ const thirdStyles = css`
         order: 3; 
 
         .placement {
-            margin: .5rem auto .5rem;
+           margin-top: .5rem;
+           margin-bottom: .5rem;
         }
     }
 `;
@@ -221,7 +223,17 @@ const parsePlace = place => {
 }
 
 const TeamCard = ({ team, selectedTeam, callback}) => (
-    <div css={[teamCard, (team.ranking < 4 ? [leaderCard, placeStyles[`${team.ranking}`]] : '')]} onClick={() => callback(team)}>
+    <div 
+        css={[
+            teamCard,
+            (team.ranking < 4 && !selectedTeam ? leaderCard : ''),
+            placeStyles[`${team.ranking}`],
+            css`
+                transform: ${team.id === selectedTeam ? 'scale(1.05)' : ''};
+            `]
+        }
+        onClick={() => callback(team)}
+    >
         <div className={'placement'} css={css`
             width: ${selectedTeam !== undefined ? '12.5%' : '6.25%'};
             transition-property: width;
@@ -235,7 +247,6 @@ const TeamCard = ({ team, selectedTeam, callback}) => (
         <div className={'stats'} css={css`
             display: ${selectedTeam !== undefined ? 'none' : 'flex'};
         `}>
-            {selectedTeam}
             <div className={'stat'}>
                 <h4 className={'stat--header'}>Win / Loss</h4>
                 <p className={'stat--value'}>{team.record.overall.wins} - {team.record.overall.losses}</p>

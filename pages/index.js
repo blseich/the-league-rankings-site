@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useState } from 'react';
 import { jsx, css } from '@emotion/core'
-import { Combined, Leaders, Rest } from '../shared/styles';
+import { Leaders, Rest } from '../shared/styles';
 import { connectToDatabase } from '../util/mongodb';
 import TeamCard from '../client/components/team-card';
 
@@ -20,6 +20,9 @@ export default function Home({ teams }) {
     });
   };
 
+  const highlightedTeams = selectedTeam ? [] : [first, second, third];
+  const regularTeams = selectedTeam ? [first, second, third, ...rest] : rest;
+
   return (
     <div className="container">
       <div css={css`
@@ -29,12 +32,12 @@ export default function Home({ teams }) {
         transition-timing-function: ease-in-out;
       `}>
         <Leaders>
-          <TeamCard team={first} />
-          <TeamCard team={second} />
-          <TeamCard team={third} />
+          {highlightedTeams.map(team => (
+            <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} callback={toggleSelectedTeam}/>
+          ))}
         </Leaders>
         <Rest>
-          {rest.map(team => (
+          {regularTeams.map(team => (
             <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} callback={toggleSelectedTeam}/>
           ))}
         </Rest>
