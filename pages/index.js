@@ -20,28 +20,43 @@ export default function Home({ teams }) {
     });
   };
 
-  const highlightedTeams = selectedTeam ? [] : [first, second, third];
-  const regularTeams = selectedTeam ? [first, second, third, ...rest] : rest;
-
   return (
-    <div className="container">
+    <div className="container" css={css`display: flex;`}>
       <div css={css`
-        max-width: ${selectedTeam ? '30%' : '100%'};
+        width: ${selectedTeam ? '33.3%' : '100%'};
         transition-duration: .3s;
-        transition-property: max-width;
+        transition-property: width;
         transition-timing-function: ease-in-out;
+        display: inline-block;
       `}>
-        <Leaders>
-          {highlightedTeams.map(team => (
-            <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} callback={toggleSelectedTeam}/>
-          ))}
-        </Leaders>
+        {
+          !selectedTeam ? (
+            <Leaders>
+              {[first,second,third].map(team => (
+                <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} callback={toggleSelectedTeam}/>
+              ))}
+            </Leaders>
+          ) : ''
+        }
         <Rest>
-          {regularTeams.map(team => (
+          {(selectedTeam ? [first,second,third, ...rest] : rest).map(team => (
             <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} callback={toggleSelectedTeam}/>
           ))}
         </Rest>
       </div>
+      <div
+        css={css`
+          width: ${selectedTeam ? '66.6%' : '0%'};
+          transition-duration: .3s;
+          transition-property: width;
+          transition-timing-function: ease-in-out;
+          height: 250px;
+          display: inline-block;
+          background: white;
+          box-shadow: inset 0.15rem 0.15rem 0.2rem 0.2rem #e3e3e3;
+          border-radius: .5rem;
+        `}
+      ></div>
     </div>
   )
 }
