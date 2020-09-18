@@ -23,11 +23,16 @@ export default function Home({ teams }) {
   return (
     <div className="container" css={css`display: flex;`}>
       <div css={css`
-        width: ${selectedTeam ? '33.3%' : '100%'};
+        width: ${selectedTeam ? '0%' : '100%'};
+        @media (min-width: 1028px) {
+          width: ${selectedTeam ? '33.3%' : '100%'};
+        }
         transition-duration: .3s;
         transition-property: width;
         transition-timing-function: ease-in-out;
         display: inline-block;
+        background: #f3f3f3;
+        z-index: 1;
       `}>
         {
           !selectedTeam ? (
@@ -46,15 +51,20 @@ export default function Home({ teams }) {
       </div>
       <div
         css={css`
-          width: ${selectedTeam ? '66.6%' : '0%'};
+          width: ${selectedTeam ? '100%' : '0%'};
+          @media (min-width: 1028px) {
+            width: ${selectedTeam ? '66.6%' : '0%'};
+          }
           transition-duration: .3s;
           transition-property: width;
           transition-timing-function: ease-in-out;
-          height: 250px;
           display: inline-block;
           background: white;
-          box-shadow: inset 0.15rem 0.15rem 0.2rem 0.2rem #e3e3e3;
+          box-shadow: inset 0.15rem 0.15rem 0.2rem 0.2rem #efefef;
           border-radius: .5rem;
+          position: sticky;
+          top: 5vh;
+          height: 90vh;
         `}
       ></div>
     </div>

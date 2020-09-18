@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core'
 const teamCard = css`
     background: white;
     border-radius: .5rem;
-    box-shadow: .15rem .15rem .2rem .2rem #e3e3e3;
+    /* box-shadow: .15rem .15rem .2rem .2rem #e3e3e3; */
     box-sizing: border-box;
     display: flex;
     margin-bottom: .5rem;
@@ -174,11 +174,6 @@ const secondStyles = css`
         margin-bottom: 1rem;
         margin-top: 1rem;
         order: 1;
-
-        .placement {
-           margin-top: .5rem;
-           margin-bottom: .5rem;
-        }
     }
 `;
 
@@ -190,12 +185,7 @@ const thirdStyles = css`
         flex-grow: 3;
         margin-bottom: 1rem;
         margin-top: 1rem;
-        order: 3; 
-
-        .placement {
-           margin-top: .5rem;
-           margin-bottom: .5rem;
-        }
+        order: 3;
     }
 `;
 
@@ -205,7 +195,8 @@ const placeStyles = {
     "3": thirdStyles,
 };
 
-const parsePlace = place => {
+const parsePlace = place => { 
+        
     switch(place) {
         case 1: 
             return "1st";
