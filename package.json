@@ -10,8 +10,10 @@
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
+    "@types/jest": "^26.0.14",
     "emotion": "^10.0.27",
     "emotion-server": "^10.0.27",
+    "espn-ff-utilities": "^0.4.0",
     "mongodb": "^3.5.9",
     "next": "latest",
     "react": "^16.13.1",

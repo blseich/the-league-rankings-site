@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
-const ESPN_TEAMS_URL="https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1092538?view=modular&view=mTeam";
+const ESPN_TEAMS_URL="https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1092538?view=modular&view=mTeam&view=mBoxscore&view=mMatchupScore&view=mSettings";
 
-export async function fetchEspnData() {
-    const res = await fetch(ESPN_TEAMS_URL, {
+export async function fetchEspnData(scoringPeriodId) {
+    const res = await fetch(`${ESPN_TEAMS_URL}&scoringPeriodId=${scoringPeriodId}`, {
         headers: {
             cookie: `SWID=${process.env.ESPN_SWID}; espn_s2=${process.env.ESPN_ESPN_S2};`,
         },

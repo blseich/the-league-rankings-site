@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core'
 const teamCard = css`
     background: white;
     border-radius: .5rem;
-    /* box-shadow: .15rem .15rem .2rem .2rem #e3e3e3; */
+    box-shadow: .15rem .15rem .2rem .2rem #e3e3e3;
     box-sizing: border-box;
     display: flex;
     margin-bottom: .5rem;
