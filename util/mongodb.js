@@ -35,3 +35,14 @@ export async function connectToDatabase() {
 
   return { client, db }
 }
+
+export async function getSeasonDataForWeek(scoringPeriodId) {
+  const { db } = await connectToDatabase();
+
+  return await db
+    .collection('season_stats')
+    .find({
+      week: scoringPeriodId
+    })
+    .toArray();
+}

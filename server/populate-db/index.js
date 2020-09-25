@@ -1,6 +1,5 @@
 import { fetchEspnData } from './fetch-espn-data';
 import { compileWeeklyStats } from './compile-weekly-stats';
-import realWeeklyScore from 'espn-ff-utilities/lib/real-weekly-score';
 // import { connectToDatabase } from '../../util/mongodb';
 
 const rankingsFormula = ({
