@@ -1,4 +1,4 @@
-export const getTeamInfo = (
+const getTeamInfo = (
     week, 
     { 
         location,
@@ -13,3 +13,7 @@ export const getTeamInfo = (
     teamId,
     week
 });
+
+export const getTeamsInfo = (week, { teams }) => (
+    teams.map(t => getTeamInfo(week, t))
+);
