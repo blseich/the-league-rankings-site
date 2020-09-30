@@ -9,6 +9,7 @@ const getPowerRankings = (seasonStats) => (
         .sort((t1, t2) => t2.powerRankingIndex - t1.powerRankingIndex)
         .map((team, index) => ({
             ...team,
+            delta: team.powerRanking - (index + 1),
             powerRanking: index + 1,
         }))
 );

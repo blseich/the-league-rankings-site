@@ -14,6 +14,7 @@ const prevWeekData = [
         adjustedVictories: 5,
         pointsFor: 100,
         bestPossibleScore: 150,
+        powerRanking: 4,
     },
     {
         teamId: 2,
@@ -66,6 +67,15 @@ describe('Get Compiled Stats', () => {
         const result = await getSeasonStats(scoringPeriodId, weekData);
         expect(result[0].week).toEqual(scoringPeriodId);
         expect(result[1].week).toEqual(scoringPeriodId);
+        done();
+    });
+
+    it('should set the previous weeks power ranking', async done => {
+        const weekData = [{
+            teamId: 1
+        }];
+        const result = await getSeasonStats(scoringPeriodId, weekData);
+        expect(result[0].powerRanking).toEqual(4);
         done();
     });
 

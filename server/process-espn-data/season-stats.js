@@ -16,6 +16,7 @@ const initTeam = {
         wins: 0,
         losses: 0,
     },
+    powerRanking: 6,
 };
 
 const initSeasonData = () => (
@@ -41,6 +42,7 @@ export const getSeasonStats = async (scoringPeriodId, weekStats) => {
         return {
             adjustedVictories: adjustedVictories + prevWeekTeamData.adjustedVictories,
             bestPossibleScore: Number(round(bestPossibleScore + prevWeekTeamData.bestPossibleScore+'e2')+'e-2'),
+            powerRanking: prevWeekTeamData.powerRanking,
             highestWeeklyScore: max(pointsFor, prevWeekTeamData.highestWeeklyScore),
             lowestWeeklyScore: min(pointsFor, prevWeekTeamData.lowestWeeklyScore),
             pointsFor: Number(round(pointsFor + prevWeekTeamData.pointsFor + 'e2')+'e-2'),
