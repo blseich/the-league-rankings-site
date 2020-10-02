@@ -1,5 +1,5 @@
-import { keyframes, css, Global } from '@emotion/core'
-import styled from '@emotion/styled'
+import { css, Global } from '@emotion/core'
+import { colors } from './theming';
 
 export const globalStyles = (
   <Global
@@ -10,7 +10,8 @@ export const globalStyles = (
         margin: 0;
         background: #f3f3f3;
         min-height: 100%;
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        color: ${colors.font};
         @media (min-width: 1028px) {
           font-size: 24px;
         }

@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/core'
 import Link from 'next/link';
 import Stats from './components/stats';
 import Placement from './components/placement';
+import { colors } from '../../../shared/theming';
 
 const teamCard = css`
     background: white;
@@ -25,7 +26,7 @@ const teamCard = css`
     }
 
     .logo {
-        border: .15rem solid #b0e4f9;
+        border: .15rem solid ${colors.primary};
         border-radius: 100%;
         height: 2rem;
         width: 2rem;
@@ -42,7 +43,6 @@ const teamCard = css`
         flex-grow: 4;
         flex-basis: 0;
         font-weight: 400;
-        color: #282828;
 
        @media(min-width: 1028px) {
            align-items: flex-start;
@@ -64,7 +64,7 @@ const leaderCard = css`
         padding: 1rem 0 0 0;
 
         .logo {
-            border: .3rem solid #b0e4f9;
+            border: .3rem solid ${colors.primary};
             height: 4.5rem;
             width: 4.5rem;
             order: 2;

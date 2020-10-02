@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import { colors } from '../../../../shared/theming';
 
 const stats = css`
     align-self: flex-end;
@@ -10,7 +11,7 @@ const stats = css`
     @media (min-width: 1028px) {
         width: 60%;
         margin: auto 0 auto auto;
-        border-left: .125rem solid #90c4d9;
+        border-left: .125rem solid ${colors.secondary};
     }
 
     .stat {
@@ -21,7 +22,7 @@ const stats = css`
         justify-content: center;
         
         &--header {
-            color: #90c4d9;
+            color: ${colors.secondary};
             font-size: .5rem;
             font-weight: 400;
             font-family: 'Patua One', sans-serif;
@@ -29,8 +30,8 @@ const stats = css`
         }
 
         &--middle {
-            border-left: .125rem solid #90c4d9;
-            border-right: .125rem solid #90c4d9;
+            border-left: .125rem solid ${colors.secondary};
+            border-right: .125rem solid ${colors.secondary};
         }
 
         &--value {
@@ -53,11 +54,11 @@ const leaderStats = css`
 
         .stat {
             border-left: 0;
-            border-top: .125rem solid #90c4d9;
+            border-top: .125rem solid ${colors.secondary};
         
             &--middle {
-                border-left: .125rem solid #90c4d9;
-                border-right: .125rem solid #90c4d9;
+                border-left: .125rem solid ${colors.secondary};
+                border-right: .125rem solid ${colors.secondary};
             }
 
             &--value {
