@@ -30,12 +30,12 @@ const leaderPlacementStyles = (place) => (css`
     @media (min-width: 1028px) {
         background: ${place === 1 ? 'gold' : place === 2 ? 'silver' : '##cd7f32'};
         color: white;
+        flex: 0;
         font-weight: bolder;
-        margin: auto;
         width: 33%;
         order: 3;
-        margin-top: ${place > 1 ? '.5rem' : 'auto'};
-        margin-bottom: ${place > 1 ? '.5rem' : 'auto'};
+        margin-top: ${place > 1 ? '.5rem' : '1rem'};
+        margin-bottom: ${place > 1 ? '.5rem' : '1rem'};
     }
 `);
 
