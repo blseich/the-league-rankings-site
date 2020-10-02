@@ -11,12 +11,16 @@ const header = css`
     font-family: 'Roboto',sans-serif;
     font-weight: bolder;
     border-bottom: .25rem solid #90c4d9;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media(min-width: 1028) {
+        position: absolute;
+    }
 `;
 
 const Header = () => (
