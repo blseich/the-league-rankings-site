@@ -121,22 +121,18 @@ const TeamCard = ({ team, selectedTeam, callback}) => (
     <div 
         css={[
             teamCard,
-            (team.powerRanking < 4 && !selectedTeam ? leaderCard : ''),
+            (team.powerRanking < 4 ? leaderCard : ''),
             placeStyles[`${team.powerRanking}`],
-            css`
-                transform: ${team.id === selectedTeam ? 'scale(1.05)' : ''};
-            `]
-        }
-        onClick={() => callback(team)}
+        ]}
         key={team.teamId}
     >
-        <Placement {...team} selectedTeam={selectedTeam} />
+        <Placement {...team} />
         <img className={'logo'} src={team.logo} />
         <div className={'team-name'}>
             <h3 className={'primary'}>{team.location}</h3>
             <h3 className={'secondary'}>{team.nickname}</h3>
         </div>
-        <Stats {...team}  selectedTeam={selectedTeam} />
+        <Stats {...team}  />
 </div>
 );
 

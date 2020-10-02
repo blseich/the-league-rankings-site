@@ -5,6 +5,7 @@ const stats = css`
     align-self: flex-end;
     margin-top: .5rem;
     width: 100%;
+    display: flex;
 
     @media (min-width: 1028px) {
         width: 60%;
@@ -70,11 +71,10 @@ const DeltaSymbol = ({ delta }) => (
    delta === 0 ? '-' : <i className={`fas fa-arrow-${delta > 0 ? 'up' : 'down'}`}></i>
 )
 
-const Stats = ({record, pointsFor, delta, powerRanking, selectedTeam}) => (
+const Stats = ({record, pointsFor, delta, powerRanking }) => (
     <div css={[
         stats,
         (powerRanking < 4 ? leaderStats : ''),
-        css`display: ${selectedTeam !== undefined ? 'none' : 'flex'};`
     ]}>
         <div className={'stat'}>
             <h4 className={'stat--header'}>Win / Loss</h4>

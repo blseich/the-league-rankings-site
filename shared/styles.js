@@ -73,6 +73,7 @@ export const Leaders = styled('div')`
     justify-content: space-between;
     margin-bottom: 2rem;
     padding: 0 0;
+    width: 100%;
   }
   padding: 0 5%;
   margin: auto;

@@ -60,11 +60,7 @@ const parsePlace = place => {
 const Placement = ({ powerRanking, selectedTeam }) => (
     <div css={[
         placement,
-        css`
-            width: ${selectedTeam !== undefined ? '12.5%' : '6.25%'};
-        `,
-        (powerRanking < 4 && !selectedTeam ? leaderPlacementStyles(powerRanking) : ''),
-        
+        (powerRanking < 4 ? leaderPlacementStyles(powerRanking) : ''),
     ]}>
         {parsePlace(powerRanking)}
     </div>
