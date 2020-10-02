@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import Link from 'next/link';
 import Stats from './components/stats';
 import Placement from './components/placement';
 
@@ -118,22 +119,25 @@ const placeStyles = {
 };
 
 const TeamCard = ({ team, selectedTeam, callback}) => (
-    <div 
-        css={[
-            teamCard,
-            (team.powerRanking < 4 ? leaderCard : ''),
-            placeStyles[`${team.powerRanking}`],
-        ]}
-        key={team.teamId}
+    <Link
+        href={`/team-details/${team.teamId}`}
     >
-        <Placement {...team} />
-        <img className={'logo'} src={team.logo} />
-        <div className={'team-name'}>
-            <h3 className={'primary'}>{team.location}</h3>
-            <h3 className={'secondary'}>{team.nickname}</h3>
+        <div 
+            css={[
+                teamCard,
+                (team.powerRanking < 4 ? leaderCard : ''),
+                placeStyles[`${team.powerRanking}`],
+            ]}
+        >
+            <Placement {...team} />
+            <img className={'logo'} src={team.logo} />
+            <div className={'team-name'}>
+                <h3 className={'primary'}>{team.location}</h3>
+                <h3 className={'secondary'}>{team.nickname}</h3>
+            </div>
+            <Stats {...team}  />
         </div>
-        <Stats {...team}  />
-</div>
+    </Link>
 );
 
 export default TeamCard;

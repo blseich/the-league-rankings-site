@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import Header from '../client/components/header';
 import { extractCritical } from 'emotion-server'
 
 export default class MyDocument extends Document {
@@ -28,7 +27,6 @@ export default class MyDocument extends Document {
           <script src="https://kit.fontawesome.com/3bd0b16fa8.js" crossOrigin="anonymous"></script>
         </Head>
         <body>
-          <Header />
           <Main />
           <NextScript />
         </body>
