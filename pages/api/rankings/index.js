@@ -11,5 +11,5 @@ export default async (req, res) => {
     
     const rankingsResults = await rankingsForScoringPeriod(latestWeek)
 
-    res.json(rankingsResults);
+    res.json(JSON.parse(JSON.stringify(rankingsResults)));
 }

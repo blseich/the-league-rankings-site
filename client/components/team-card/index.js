@@ -1,5 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import Stats from './components/stats';
+import Placement from './components/placement';
 
 const teamCard = css`
     background: white;
@@ -7,6 +9,7 @@ const teamCard = css`
     box-shadow: .15rem .15rem .2rem .2rem #e3e3e3;
     box-sizing: border-box;
     display: flex;
+    flex-flow: wrap;
     margin-bottom: .5rem;
     padding: .5rem;
     transition-duration: .3s;
@@ -15,9 +18,9 @@ const teamCard = css`
     
     @media (min-width: 1028px) {
         &:hover {
-            transform: scale(1.05);
-            
+            transform: scale(1.05); 
         }
+        flex-flow: nowrap;
     }
 
     .logo {
@@ -26,51 +29,6 @@ const teamCard = css`
         height: 2rem;
         width: 2rem;
         margin: auto .5rem;
-    }
-
-    .placement {
-        color: white;
-        border-radius: 1rem;
-        box-sizing: border-box;
-        font-family: 'Roboto', serif;
-        margin: auto 0 auto 0;
-        padding: .1rem;
-        text-align: center;
-        background: #b0e4f9;
-        font-size: .75rem;
-    }
-
-    .stats {
-        align-self: flex-end;
-        width: 50%;
-        margin: auto 0 auto auto;
-
-        @media (min-width: 1028px) {
-            width: 60%;
-        }
-    }
-
-    .stat {
-        width: 33.3%;
-        border-left: .125rem solid #90c4d9;
-        display: flex;
-        flex-flow: column nowrap;
-        align-content: center;
-        justify-content: center;
-        
-        &--header {
-            color: #90c4d9;
-            font-size: .5rem;
-            font-weight: 400;
-            font-family: 'Patua One', sans-serif;
-            margin: auto;
-        }
-
-        &--value {
-            color: #282828;
-            font-family: 'Roboto', sans-serif;
-            margin: auto;
-        }
     }
 
     .team-name {
@@ -112,45 +70,10 @@ const leaderCard = css`
                 margin: 0 auto;
             }
         }
-
-        .placement {
-            font-weight: bolder;
-            margin: auto;
-            width: 33%;
-            order: 3;
-        }
-
-        .stats {
-            background: #b0e4f9;
-            border-radius: 0 0 .5rem .5rem;
-            width: 100%;
-            height: 2rem;
-            display: flex;
-            order: 99;
-            margin: 0;
-        }
-
-        .stat {
-            border-left: 0;
-            border-top: .125rem solid #90c4d9;
-        
-            &-middle {
-                border-left: .125rem solid #90c4d9;
-                border-right: .125rem solid #90c4d9;
-            }
-
-            &--value {
-                color: #ffffff;
-            }
-        }
     }
 `;
 
 const firstStyles = css`
-    .placement {
-        background: gold;
-    }
-
     @media (min-width: 1028px) {
         flex-grow: 4;
         order: 2;
@@ -165,10 +88,6 @@ const firstStyles = css`
 `;
 
 const secondStyles = css`
-    .placement {
-        background: silver;
-    }
-
     @media (min-width: 1028px) {
         flex-grow: 3;
         margin-bottom: 1rem;
@@ -178,9 +97,6 @@ const secondStyles = css`
 `;
 
 const thirdStyles = css`
-    .placement {
-        background: #cd7f32;
-    }
     @media (min-width: 1028px) {
         flex-grow: 3;
         margin-bottom: 1rem;
@@ -217,41 +133,23 @@ const TeamCard = ({ team, selectedTeam, callback}) => (
     <div 
         css={[
             teamCard,
-            (team.ranking < 4 && !selectedTeam ? leaderCard : ''),
-            placeStyles[`${team.ranking}`],
+            (team.powerRanking < 4 && !selectedTeam ? leaderCard : ''),
+            placeStyles[`${team.powerRanking}`],
             css`
                 transform: ${team.id === selectedTeam ? 'scale(1.05)' : ''};
             `]
         }
         onClick={() => callback(team)}
+        key={team.teamId}
     >
-        <div className={'placement'} css={css`
-            width: ${selectedTeam !== undefined ? '12.5%' : '6.25%'};
-            transition-property: width;
-            transition-duration: .3s;
-        `}>{parsePlace(team.ranking)}</div>
+        <Placement {...team} selectedTeam={selectedTeam} />
         <img className={'logo'} src={team.logo} />
         <div className={'team-name'}>
             <h3 className={'primary'}>{team.location}</h3>
             <h3 className={'secondary'}>{team.nickname}</h3>
         </div>
-        <div className={'stats'} css={css`
-            display: ${selectedTeam !== undefined ? 'none' : 'flex'};
-        `}>
-            <div className={'stat'}>
-                <h4 className={'stat--header'}>Win / Loss</h4>
-                <p className={'stat--value'}>{team.record.overall.wins} - {team.record.overall.losses}</p>
-            </div>
-            <div className={'stat stat-middle'}>
-                <h4 className={'stat--header'}>Points For</h4>
-                <p className={'stat--value'}>{team.record.overall.pointsFor}</p>
-            </div>
-            <div className={'stat'}>
-                <h4 className={'stat--header'}>Delta</h4>
-                <p className={'stat--value'}>&#8679;3</p>
-            </div>
-        </div>
-    </div>
+        <Stats {...team}  selectedTeam={selectedTeam} />
+</div>
 );
 
 export default TeamCard;

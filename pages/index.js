@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { useState } from 'react';
-import { jsx, css } from '@emotion/core'
+import { jsx, css } from '@emotion/core';
+import fetch from 'node-fetch';
+import absoluteUrl from 'next-absolute-url';
 import { Leaders, Rest } from '../shared/styles';
-import { connectToDatabase } from '../util/mongodb';
 import TeamCard from '../client/components/team-card';
 
 export default function Home({ teams }) {
@@ -11,7 +12,7 @@ export default function Home({ teams }) {
     second,
     third,
     ...rest
-  ] = teams.map((team, i) => Object.assign(team, { ranking: i+1 }));
+  ] = teams.sort((t1, t2) => t1.powerRanking - t2.powerRanking);
 
   const [selectedTeam, setSelectedTeam] = useState();
   const toggleSelectedTeam = team => {
@@ -38,14 +39,14 @@ export default function Home({ teams }) {
           !selectedTeam ? (
             <Leaders>
               {[first,second,third].map(team => (
-                <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} callback={toggleSelectedTeam}/>
+                <TeamCard key={team.teamId} team={team} selectedTeam={selectedTeam ? selectedTeam.teamId : undefined} callback={toggleSelectedTeam}/>
               ))}
             </Leaders>
           ) : ''
         }
         <Rest>
           {(selectedTeam ? [first,second,third, ...rest] : rest).map(team => (
-            <TeamCard team={team} selectedTeam={selectedTeam ? selectedTeam.id : undefined} callback={toggleSelectedTeam}/>
+            <TeamCard key={team.teamId} team={team} selectedTeam={selectedTeam ? selectedTeam.teamId : undefined} callback={toggleSelectedTeam}/>
           ))}
         </Rest>
       </div>
@@ -71,14 +72,11 @@ export default function Home({ teams }) {
   )
 }
 
-export async function getServerSideProps(context) {
-  const { db } = await connectToDatabase();
-
-  const teams = await db.collection("teams")
-    .find({})
-    .toArray();
-
+export async function getServerSideProps({ req }) {
+  const { protocol, host } = absoluteUrl(req, 'localhost:3000') 
+  const teamsReq = await fetch(`${protocol}//${host}/api/rankings`);
+  const teams = await teamsReq.json();  
   return {
-    props: { teams: JSON.parse(JSON.stringify(teams)) },
-  }
+    props: { teams },
+  };
 }

@@ -5,5 +5,5 @@ export default async (req, res) => {
 
     const rankingsResults = await rankingsForScoringPeriod(parseInt(scoringPeriodId));
 
-    res.json(rankingsResults);
+    res.json(JSON.parse(JSON.stringify(rankingsResults)));
 }
