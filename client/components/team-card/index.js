@@ -10,7 +10,7 @@ const teamCard = css`
     box-sizing: border-box;
     display: flex;
     flex-flow: wrap;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
     padding: .5rem;
     transition-duration: .3s;
     transition-property: transform;
@@ -59,7 +59,7 @@ const leaderCard = css`
         align-items: center;
         flex-basis: 0;
         flex-flow: column nowrap;
-        margin: 0 .5rem;
+        margin: 0 .5rem .5rem 1rem;
         padding: 1rem 0 0 0;
 
         .logo {
@@ -85,7 +85,8 @@ const firstStyles = css`
     @media (min-width: 1028px) {
         flex-grow: 4;
         order: 2;
-
+        margin-bottom: 0;
+        
         .primary {
             font-size: 1.5rem;
         }
