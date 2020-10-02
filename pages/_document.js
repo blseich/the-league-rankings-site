@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Header from '../client/components/header';
 import { extractCritical } from 'emotion-server'
 
 export default class MyDocument extends Document {
@@ -24,8 +25,10 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Roboto&family=Roboto:wght@900&display=swap" rel="stylesheet" />
+          <script src="https://kit.fontawesome.com/3bd0b16fa8.js" crossOrigin="anonymous"></script>
         </Head>
         <body>
+          <Header />
           <Main />
           <NextScript />
         </body>

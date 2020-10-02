@@ -89,9 +89,6 @@ const firstStyles = css`
         .primary {
             font-size: 1.5rem;
         }
-        .stats {
-            height: 2.5rem;
-        }
     }
 `;
 
@@ -118,24 +115,6 @@ const placeStyles = {
     "2": secondStyles,
     "3": thirdStyles,
 };
-
-const parsePlace = place => { 
-        
-    switch(place) {
-        case 1: 
-            return "1st";
-            break;
-        case 2:
-            return "2nd";
-            break;
-        case 3:
-            return "3rd";
-            break;
-        default:
-            return `${place}th`;
-            break;
-    }
-}
 
 const TeamCard = ({ team, selectedTeam, callback}) => (
     <div 
