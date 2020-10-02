@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { Fragment } from 'react';
 import styled from '@emotion/styled'
 import fetch from 'node-fetch';
 import absoluteUrl from 'next-absolute-url';
