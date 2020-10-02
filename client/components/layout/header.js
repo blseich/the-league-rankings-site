@@ -18,7 +18,7 @@ const header = css`
     justify-content: center;
     align-items: center;
 
-    @media(min-width: 1028) {
+    @media(min-width: 1028px) {
         position: absolute;
     }
 `;

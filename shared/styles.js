@@ -6,7 +6,7 @@ export const globalStyles = (
     styles={css`
       html,
       body {
-        padding: 3rem 1rem;
+        padding: 3rem 0;
         margin: 0;
         background: #f3f3f3;
         min-height: 100%;
