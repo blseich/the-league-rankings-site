@@ -32,13 +32,21 @@ const teamCard = css`
     }
 
     .team-name {
+        align-items: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        font-size: .75rem;
+        font-size: 1rem;
         font-family: 'Patua One', sans-serif;
+        flex-grow: 4;
+        flex-basis: 0;
         font-weight: 400;
         color: #282828;
+
+       @media(min-width: 1028px) {
+           align-items: flex-start;
+           font-size: .75rem;
+       }
 
         * {
             margin: 0;
