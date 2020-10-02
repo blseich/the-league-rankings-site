@@ -66,6 +66,10 @@ const leaderStats = css`
     }
 `;
 
+const DeltaSymbol = ({ delta }) => (
+   delta === 0 ? '-' : <i className={`fas fa-arrow-${delta > 0 ? 'up' : 'down'}`}></i>
+)
+
 const Stats = ({record, pointsFor, delta, powerRanking, selectedTeam}) => (
     <div css={[
         stats,
@@ -82,9 +86,9 @@ const Stats = ({record, pointsFor, delta, powerRanking, selectedTeam}) => (
         </div>
         <div className={'stat'}>
             <h4 className={'stat--header'}>Delta</h4>
-            <p className={'stat--value'} css={css`
+            <span className={'stat--value'} css={css`
                     color: ${delta > 0 ? 'green' : delta < 0 ? 'red' : '' };
-            `}>{delta === 0 ? '-' : delta > 0 ? `⇧${delta}` : `⇩${Math.abs(delta)}`}</p>
+            `}><DeltaSymbol delta={delta}/>{delta !== 0 ? Math.abs(delta) : ''}</span>
         </div>
     </div>
 )
