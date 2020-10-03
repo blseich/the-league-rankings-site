@@ -25,6 +25,7 @@ export default class MyDocument extends Document {
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Roboto&family=Roboto:wght@900&display=swap" rel="stylesheet" />
           <script src="https://kit.fontawesome.com/3bd0b16fa8.js" crossOrigin="anonymous"></script>
+          <link rel="stylesheet" href="https://unpkg.com/react-vis/dist/style.css" />
         </Head>
         <body>
           <Main />
