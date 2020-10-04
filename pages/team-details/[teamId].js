@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/core'
 import { Fragment } from 'react';
 import absoluteUrl from 'next-absolute-url';
 import { Chart } from './chart';
+import Stats from './stats';
 import { colors } from '../../shared/theming';
 
 export default function TeamDetails({ team }) {
@@ -47,6 +48,7 @@ export default function TeamDetails({ team }) {
                 </div>
             </div>
             <Chart {...team} />
+            <Stats team={team} />
         </Fragment>
     )
 }
