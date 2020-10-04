@@ -26,22 +26,33 @@ export const Chart = ({ weeks }) => {
         y: 0-cumulative.powerRanking,
     }));
     return (
-        <div css={css`width: 750px; margin: auto; padding: .5rem;`}>
+        <div css={css`margin: auto; padding: .5rem; width: 350px;`}>
             <XYPlot
-                width={300}
-                height={300}
                 yDomain={[-12, -1]}
                 onMouseLeave={() => setTooltipData(null)}
+                width={350}
+                height={350}
             >
                 <HorizontalGridLines />
                 <LineMarkSeries
                     data={data}
-                    onNearestXY={(value) => setTooltipData(value)}/>
+                    onNearestXY={(value) => setTooltipData(value)}
+                    lineStyle={{ stroke: colors.primary, strokeWidth: 4 }}
+                    markStyle={{ stroke: colors.secondary, fill: colors.secondary }}
+                />
                 <XAxis 
                     tickTotal={data.length-1}
+                    style={{
+                        text: { fontSize: '1rem',  },
+                        line: { strokeWidth: 4, stroke: colors.secondary },
+                    }}
                 />
                 <YAxis 
                     tickFormat={(val) => Math.abs(val)}
+                    style={{
+                        text: { fontSize: '1rem' },
+                        line: { strokeWidth: 4, stroke: colors.secondary },
+                    }}
                 />
                 {tooltipData && (
                     <Hint value={tooltipData}>

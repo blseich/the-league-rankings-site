@@ -4,8 +4,7 @@ import Link from 'next/link';
 
 const header = css`
     width: 100%;
-    height: 10%;
-    max-height: 75px;
+    height: 75px;
     background: #b0e4f9;
     color: white;
     font-family: 'Roboto',sans-serif;

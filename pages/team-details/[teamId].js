@@ -15,6 +15,7 @@ export default function TeamDetails({ team }) {
                 max-width: 786px;
                 width: 100%;
                 margin: auto;
+                box-sizing: border-box;
             `}>
                 <img 
                     css={css`
