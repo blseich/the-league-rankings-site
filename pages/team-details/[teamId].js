@@ -2,9 +2,9 @@
 import { jsx, css } from '@emotion/core'
 import { Fragment } from 'react';
 import absoluteUrl from 'next-absolute-url';
-import { Chart } from './chart';
-import Stats from './stats';
 import { colors } from '../../shared/theming';
+import PowerRankingStats from './power-ranking-stats';
+import VictoryStats from './victory-stats';
 
 export default function TeamDetails({ team }) {
     return (
@@ -33,7 +33,7 @@ export default function TeamDetails({ team }) {
                     src={team.logo} 
                 />
                 <div css={css`
-                    font-size: 1.5rem;
+                    font-size: 2rem;
                     font-weight: bolder;
                     font-family: 'Patua One', sans-serif;
                     display: flex;
@@ -43,12 +43,16 @@ export default function TeamDetails({ team }) {
                         font-size: 2rem;
                     }
                 `}>
-                    <div>{team.location}</div>
-                    <div>{team.nickname}</div>
+                    <h1 css={css`margin: 0;font-size:inherit;`}>{team.location}<br />{team.nickname}</h1>
                 </div>
             </div>
-            <Chart {...team} />
-            <Stats team={team} />
+            <div
+                css={css`
+                    margin-top: 1rem;
+                `}
+            >
+                <VictoryStats team={team} />
+            </div>
         </Fragment>
     )
 }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import {
     XYPlot, LineMarkSeries, XAxis, YAxis, HorizontalGridLines, VerticalGridLines, Hint
 } from 'react-vis';
-import { colors } from '../../shared/theming';
+import { colors } from '../../../shared/theming';
 
 const Tooltip = ({ tooltipData }) => (
     <div css={css`
@@ -19,7 +19,7 @@ const Tooltip = ({ tooltipData }) => (
     </div>
 );
 
-export const Chart = ({ weeks }) => {
+const Chart = ({ weeks }) => {
     const [ tooltipData, setTooltipData ] = useState(null);
     const data = weeks.map(({ cumulative }) => ({
         x: cumulative.week,
@@ -46,6 +46,7 @@ export const Chart = ({ weeks }) => {
                         text: { fontSize: '1rem',  },
                         line: { strokeWidth: 4, stroke: colors.secondary },
                     }}
+                    title={'Week'}
                 />
                 <YAxis 
                     tickFormat={(val) => Math.abs(val)}
@@ -53,6 +54,7 @@ export const Chart = ({ weeks }) => {
                         text: { fontSize: '1rem' },
                         line: { strokeWidth: 4, stroke: colors.secondary },
                     }}
+                    title={'Power Ranking'}
                 />
                 {tooltipData && (
                     <Hint value={tooltipData}>
@@ -63,3 +65,5 @@ export const Chart = ({ weeks }) => {
         </div>
     );
 };
+
+export default Chart;

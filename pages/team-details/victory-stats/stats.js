@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import { colors } from '../../shared/theming';
+import { colors } from '../../../shared/theming';
 
 const stats = css`
     align-self: flex-end;
@@ -42,21 +42,29 @@ const stats = css`
     }
 `;
 
+const totalAdjustedVictories = ({ week, weeks}) => (
+    weeks.find(w => w.cumulative.week === week).cumulative.adjustedVictories
+);
+
+const adjustedWinPercentage = ({ week, weeks}) => (
+    Number(Math.round(totalAdjustedVictories({ week, weeks }) / (week * 11)+'e3')+'e-3')
+)
+
 const Stats = ({ team }) => (
     <div css={[
         stats,
     ]}>
         <div className={'stat'}>
-            <h4 className={'stat--header'}>Current<br />Rank</h4>
-            <p className={'stat--value'}>{team.weeks.sort((t1, t2) => t2.cumulative.week - t1.cumulative.week)[0].cumulative.powerRanking}</p>
+            <h3 className={'stat--header'}>Adjusted<br />Victories</h3>
+            <p className={'stat--value'}>{totalAdjustedVictories(team)}</p>
         </div>
         <div className={'stat stat--middle'}>
-            <h4 className={'stat--header'}>Highest<br />Rank</h4>
-            <p className={'stat--value'}>{team.weeks.sort((t1, t2) => t1.cumulative.powerRanking - t2.cumulative.powerRanking)[0].cumulative.powerRanking}</p>
+            <h3 className={'stat--header'}>Adjusted<br />Win Rate</h3>
+            <p className={'stat--value'}>{adjustedWinPercentage(team)}</p>
         </div>
         <div className={'stat'}>
-            <h4 className={'stat--header'}>Lowest<br />Rank</h4>
-            <span className={'stat--value'}>{team.weeks.sort((t1, t2) => t2.cumulative.powerRanking - t1.cumulative.powerRanking)[0].cumulative.powerRanking}</span>
+            <h3 className={'stat--header'}>Average<br />Weekly Wins</h3>
+<span className={'stat--value'}>{Number(Math.round(totalAdjustedVictories(team) / team.week+'e2')+'e-2')}</span>
         </div>
     </div>
 )
