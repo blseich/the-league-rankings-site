@@ -5,6 +5,7 @@ import absoluteUrl from 'next-absolute-url';
 import { colors } from '../../shared/theming';
 import PowerRankingStats from './power-ranking-stats';
 import VictoryStats from './victory-stats';
+import CoachingStats from './coaching-stats';
 
 export default function TeamDetails({ team }) {
     return (
@@ -51,7 +52,9 @@ export default function TeamDetails({ team }) {
                     margin-top: 1rem;
                 `}
             >
+                <PowerRankingStats team={team} />
                 <VictoryStats team={team} />
+                <CoachingStats team={team} />
             </div>
         </Fragment>
     )

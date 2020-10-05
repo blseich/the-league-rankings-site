@@ -16,6 +16,7 @@ const header = css`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 
     @media(min-width: 1028px) {
         position: absolute;

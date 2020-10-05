@@ -24,7 +24,7 @@ const Chart = ({ weeks }) => {
     const data = weeks.map(({ cumulative }) => ({
         x: cumulative.week,
         y: 0-cumulative.powerRanking,
-    }));
+    })).sort((d1, d2) => d2.x-d1.x);;
     return (
         <div css={css`margin: auto; padding: .5rem; width: 350px;`}>
             <XYPlot
