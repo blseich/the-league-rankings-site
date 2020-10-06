@@ -10,8 +10,7 @@ const stats = css`
 
     @media (min-width: 1028px) {
         width: 60%;
-        margin: auto 0 auto auto;
-        border-left: .125rem solid ${colors.secondary};
+        margin: auto;
     }
 
     .stat {

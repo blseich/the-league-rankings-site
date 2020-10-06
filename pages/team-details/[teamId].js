@@ -1,13 +1,57 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import absoluteUrl from 'next-absolute-url';
 import { colors } from '../../shared/theming';
 import PowerRankingStats from './power-ranking-stats';
 import VictoryStats from './victory-stats';
 import CoachingStats from './coaching-stats';
 
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import AppBar from '@material-ui/core/AppBar';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`full-width-tabpanel-${index}`}
+        aria-labelledby={`full-width-tab-${index}`}
+        {...other}
+        css={css`
+            margin-top: 1rem;
+        `}
+      >
+        {value === index && (
+            children
+        )}
+      </div>
+    );
+  }
+
+const overrideMui = css`
+    .MuiAppBar-colorPrimary {
+        background: ${colors.font};
+        color: '#fff';
+    }
+    .Mui-selected {
+        color: ${colors.primary};
+    }
+    .MuiTabs-indicator {
+        background-color: ${colors.primary};
+    }
+`;
 export default function TeamDetails({ team }) {
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     return (
         <Fragment>
             <div css={css`
@@ -48,13 +92,40 @@ export default function TeamDetails({ team }) {
                 </div>
             </div>
             <div
-                css={css`
+                css={[css`
                     margin-top: 1rem;
-                `}
+                    box-sizing: border-box;
+                    padding: 0 .5rem;
+                    @media(min-width: 1028px) {
+                        width: 60%;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                `,
+                overrideMui]}
             >
-                <PowerRankingStats team={team} />
-                <VictoryStats team={team} />
-                <CoachingStats team={team} />
+                <AppBar 
+                    position="relative"
+                >
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        variant="fullWidth"
+                    >
+                        <Tab label="Ranking" />
+                        <Tab label="Victories" />
+                        <Tab label="Scoring" />
+                    </Tabs>
+                </AppBar>
+                <TabPanel value={value} index={0}>
+                    <PowerRankingStats team={team} />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <VictoryStats team={team} />
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    <CoachingStats team={team} />
+                </TabPanel>
             </div>
         </Fragment>
     )

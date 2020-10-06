@@ -16,7 +16,7 @@ const Tooltip = ({ tooltipData, week }) => (
     `}>
         <p css={css`margin: 0;`}>Week: {tooltipData.x}</p>
         <p css={css`margin: 0;`}>Adjusted Wins: {Math.abs(tooltipData.y)}</p>
-        <p css={css`margin: 0;`}>Scored {week.pointsFor} and {week.didWin ? 'Won' : 'Lost'}</p>
+        <p css={css`margin: 0;`}>{week.didWin ? 'Won' : 'Lost'}</p>
     </div>
 );
 

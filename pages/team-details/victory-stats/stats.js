@@ -10,8 +10,7 @@ const stats = css`
 
     @media (min-width: 1028px) {
         width: 60%;
-        margin: auto 0 auto auto;
-        border-left: .125rem solid ${colors.secondary};
+        margin: auto;
     }
 
     .stat {
@@ -63,7 +62,7 @@ const Stats = ({ team }) => (
             <p className={'stat--value'}>{adjustedWinPercentage(team)}</p>
         </div>
         <div className={'stat'}>
-            <h3 className={'stat--header'}>Average<br />Weekly Wins</h3>
+            <h3 className={'stat--header'}>Adjusted<br />Wins/Wins</h3>
 <span className={'stat--value'}>{Number(Math.round(totalAdjustedVictories(team) / team.week+'e2')+'e-2')}</span>
         </div>
     </div>
