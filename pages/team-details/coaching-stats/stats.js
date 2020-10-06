@@ -9,7 +9,7 @@ const stats = css`
     display: flex;
 
     @media (min-width: 1028px) {
-        width: 60%;
+        width: 75%;
         margin: auto;
     }
 

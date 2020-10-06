@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import { colors } from '../../../shared/theming';
 import Chart from './chart';
 import Stats from './stats';
+import MoreInfo from './more-info';
 
 const CoachingStats = ({ team }) => (
     <Fragment>
@@ -17,6 +18,7 @@ const CoachingStats = ({ team }) => (
         `}>Coaching Stats</h2>
         <Chart {...team} />
         <Stats team={team} />
+        <MoreInfo />
     </Fragment>
 )
 

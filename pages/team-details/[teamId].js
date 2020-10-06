@@ -23,7 +23,8 @@ function TabPanel(props) {
         aria-labelledby={`full-width-tab-${index}`}
         {...other}
         css={css`
-            margin-top: 1rem;
+            padding: 1rem .5rem;
+            background: #fff;
         `}
       >
         {value === index && (
@@ -34,9 +35,9 @@ function TabPanel(props) {
   }
 
 const overrideMui = css`
-    .MuiAppBar-colorPrimary {
+    .MuiTabs-root {
         background: ${colors.font};
-        color: '#fff';
+        color: #fff;
     }
     .Mui-selected {
         color: ${colors.primary};
@@ -104,19 +105,15 @@ export default function TeamDetails({ team }) {
                 `,
                 overrideMui]}
             >
-                <AppBar 
-                    position="relative"
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="fullWidth"
                 >
-                    <Tabs
-                        value={value}
-                        onChange={handleChange}
-                        variant="fullWidth"
-                    >
-                        <Tab label="Ranking" />
-                        <Tab label="Victories" />
-                        <Tab label="Scoring" />
-                    </Tabs>
-                </AppBar>
+                    <Tab label="Ranking" />
+                    <Tab label="Victories" />
+                    <Tab label="Scoring" />
+                </Tabs>
                 <TabPanel value={value} index={0}>
                     <PowerRankingStats team={team} />
                 </TabPanel>

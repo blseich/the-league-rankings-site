@@ -62,7 +62,7 @@ const Chart = ({ weeks }) => {
                 <YAxis 
                     tickFormat={(val) => Math.abs(val)}
                     style={{
-                        text: { fontSize: '1rem' },
+                        text: { fontSize: '16px' },
                         line: { strokeWidth: 4, stroke: colors.secondary },
                     }}
                     title={'Points'}

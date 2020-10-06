@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import { colors } from '../../../shared/theming';
 import Stats from './stats';
 import Chart from './chart';
+import MoreInfo from './more-info';
 
 const PowerRankingStats = ({ team }) => (
     <Fragment>
@@ -17,6 +18,7 @@ const PowerRankingStats = ({ team }) => (
         `}>Power Ranking Stats</h2>
         <Chart {...team} />
         <Stats team={team} />
+        <MoreInfo />
     </Fragment>
 )
 
