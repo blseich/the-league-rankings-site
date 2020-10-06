@@ -51,7 +51,7 @@ const MoreInfo = () => {
                     single team in a given week.<br /><br />If you scored the highest in a given week,
                     you would have beaten every other team if you played them and, thus, receive
                     11 adjusted victories. If you scored the lowest, you receive 0 adjusted victories.
-                    <br /><br />The Bad Beat/Lucky Win line shows where you should've lost/won in a given week, even
+                    <br /><br />The Tough Loss/Lucky Win line shows where you should've lost/won in a given week, even
                     if you had the opposite outcome.
                 </div>
             </div>
