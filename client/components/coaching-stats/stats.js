@@ -42,11 +42,11 @@ const stats = css`
 `;
 
 const averagePointsFor = ({ week, weeks}) => (
-   Number(Math.round((weeks.find(w => w.cumulative.week === week).cumulative.pointsFor / week)+'e2')+'e-2')
+   Number(Math.round((weeks.find(w => (w.cumulative || {}).week === week).cumulative.pointsFor / week)+'e2')+'e-2')
 );
 
 const averageBestPossible = ({ week, weeks}) => (
-    Number(Math.round((weeks.find(w => w.cumulative.week === week).cumulative.bestPossibleScore / week)+'e2')+'e-2')
+    Number(Math.round((weeks.find(w => (w.cumulative || {}).week === week).cumulative.bestPossibleScore / week)+'e2')+'e-2')
 )
 
 const Stats = ({ team }) => (

@@ -3,9 +3,9 @@ import { jsx, css } from '@emotion/core'
 import { Fragment, useState } from 'react';
 import absoluteUrl from 'next-absolute-url';
 import { colors } from '../../shared/theming';
-import PowerRankingStats from './power-ranking-stats';
-import VictoryStats from './victory-stats';
-import CoachingStats from './coaching-stats';
+import PowerRankingStats from '../../client/components/power-ranking-stats';
+import VictoryStats from '../../client/components/victory-stats';
+import CoachingStats from '../../client/components/coaching-stats';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
