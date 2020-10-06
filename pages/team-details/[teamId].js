@@ -23,7 +23,7 @@ function TabPanel(props) {
         aria-labelledby={`full-width-tab-${index}`}
         {...other}
         css={css`
-            padding: 1rem .5rem;
+            padding: 1rem 0;
             background: #fff;
         `}
       >
