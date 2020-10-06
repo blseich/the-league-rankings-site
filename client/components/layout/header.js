@@ -4,8 +4,7 @@ import Link from 'next/link';
 
 const header = css`
     width: 100%;
-    height: 10%;
-    max-height: 75px;
+    height: 75px;
     background: #b0e4f9;
     color: white;
     font-family: 'Roboto',sans-serif;
@@ -17,6 +16,7 @@ const header = css`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 
     @media(min-width: 1028px) {
         position: absolute;

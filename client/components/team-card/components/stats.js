@@ -88,7 +88,7 @@ const Stats = ({record, pointsFor, delta, powerRanking }) => (
         <div className={'stat'}>
             <h4 className={'stat--header'}>Delta</h4>
             <span className={'stat--value'} css={css`
-                    color: ${delta > 0 ? 'green' : delta < 0 ? 'red' : '' };
+                    color: ${delta > 0 ? colors.positive : delta < 0 ? colors.negative : '' };
             `}><DeltaSymbol delta={delta}/>{delta !== 0 ? Math.abs(delta) : ''}</span>
         </div>
     </div>
