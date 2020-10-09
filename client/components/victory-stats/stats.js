@@ -62,7 +62,7 @@ const Stats = ({ team }) => (
             <p className={'stat--value'}>{adjustedWinPercentage(team)}</p>
         </div>
         <div className={'stat'}>
-            <h3 className={'stat--header'}>Adjusted<br />Wins/Wins</h3>
+            <h3 className={'stat--header'}>Adjusted<br />Wins/Week</h3>
 <span className={'stat--value'}>{Number(Math.round(totalAdjustedVictories(team) / team.week+'e2')+'e-2')}</span>
         </div>
     </div>
