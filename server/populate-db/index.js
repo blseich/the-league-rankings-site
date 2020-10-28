@@ -4,33 +4,36 @@ import {
     getTeamsInfo,
     getWeekStats,
     getSeasonStats,
+    getSlamStats,
  } from '../process-espn-data';
  import getPowerRankings from '../power-rankings';
 
 
 const populateDb = async scoringPeriodId => {
-    const { db } = await connectToDatabase();
+    // const { db } = await connectToDatabase();
 
-    const hasWeekBeenProcessed = await db.collection('teams').find({week: scoringPeriodId}).count() > 0;
+    // const hasWeekBeenProcessed = await db.collection('teams').find({week: scoringPeriodId}).count() > 0;
     
-    if (hasWeekBeenProcessed) {
-        throw new Error(`Overwrite Error: There seems to already be data in the database for scoringPeriodId=${scoringPeriodId}. Please check the database and make any modifications using the admin db client`);
-    } else if (scoringPeriodId === 0) {
-        throw new Error(`Soring Period Id Error: ${scoringPeriodId} is not a valid scoring period`);
-    } 
+    // if (hasWeekBeenProcessed) {
+    //     throw new Error(`Overwrite Error: There seems to already be data in the database for scoringPeriodId=${scoringPeriodId}. Please check the database and make any modifications using the admin db client`);
+    // } else if (scoringPeriodId === 0) {
+    //     throw new Error(`Soring Period Id Error: ${scoringPeriodId} is not a valid scoring period`);
+    // } 
     
-    else {
+    // else {
         const espnData = await fetchEspnData(scoringPeriodId);
-        const teamsInfo = getTeamsInfo(scoringPeriodId, espnData);
-        const weekStats = getWeekStats(scoringPeriodId, espnData);
-        const seasonStatsWithRankings = getPowerRankings(
-            await getSeasonStats(scoringPeriodId, weekStats)
-        );
+        const slamStats = getSlamStats(scoringPeriodId, espnData);
+        console.log(slamStats[1]);
+        // const teamsInfo = getTeamsInfo(scoringPeriodId, espnData);
+        // const weekStats = getWeekStats(scoringPeriodId, espnData);
+        // const seasonStatsWithRankings = getPowerRankings(
+        //     await getSeasonStats(scoringPeriodId, weekStats)
+        // );
 
-        await db.collection('teams').insertMany(teamsInfo);
-        await db.collection('week_stats').insertMany(weekStats);
-        await db.collection('season_stats').insertMany(seasonStatsWithRankings);
-    }
+        // await db.collection('teams').insertMany(teamsInfo);
+        // await db.collection('week_stats').insertMany(weekStats);
+        // await db.collection('season_stats').insertMany(seasonStatsWithRankings);
+    // }
 }
 
 export default populateDb;
