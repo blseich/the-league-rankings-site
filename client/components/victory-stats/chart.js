@@ -48,7 +48,7 @@ const Chart = ({ weeks }) => {
                     data={data}
                     onNearestXY={(value) => setTooltipData(value)}
                     lineStyle={{ stroke: colors.primary, strokeWidth: 4 }}
-                    // markStyle={{ stroke: colors.secondary, fill: colors.secondary }}
+                    colorDomain={[0,1]}
                     colorRange={colorRange}
                 />
                 <LabelSeries

@@ -48,7 +48,7 @@ const overrideMui = css`
     }
 `;
 export default function TeamDetails({ team }) {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
