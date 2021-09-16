@@ -18,7 +18,7 @@ describe('Fetch Espn Data', () => {
 
     it("should call fetch with espn url and proper header values", async (done) => {
         await fetchEspnData(scoringPeriodId);
-        expect(fetch).toHaveBeenCalledWith(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/1092538?view=modular&view=mTeam&view=mBoxscore&view=mMatchupScore&view=mSettings&scoringPeriodId=${scoringPeriodId}`, {
+        expect(fetch).toHaveBeenCalledWith(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/2021/segments/0/leagues/1092538?view=modular&view=mTeam&view=mBoxscore&view=mMatchupScore&view=mSettings&scoringPeriodId=${scoringPeriodId}`, {
             headers: {
                 cookie: `SWID=${process.env.ESPN_SWID}; espn_s2=${process.env.ESPN_ESPN_S2};`
             }
