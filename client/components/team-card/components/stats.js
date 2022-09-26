@@ -44,7 +44,7 @@ const stats = css`
 
 const leaderStats = css`
     @media (min-width: 1028px) {
-        background: #b0e4f9;
+        background: ${colors.primary};
         border-radius: 0 0 .5rem .5rem;
         border: 0;
         width: 100%;

@@ -1,16 +1,17 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import { colors } from '../../../shared/theming';
 import Link from 'next/link';
 
 const header = css`
     width: 100%;
     height: 75px;
-    background: #b0e4f9;
+    background: ${colors.primary};
     color: white;
     font-family: 'Roboto',sans-serif;
     font-weight: bolder;
-    border-bottom: .25rem solid #90c4d9;
+    border-bottom: .25rem solid ${colors.secondary};
     position: fixed;
     top: 0;
     left: 0;

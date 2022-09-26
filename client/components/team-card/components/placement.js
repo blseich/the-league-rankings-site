@@ -1,11 +1,12 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import { colors } from '../../../../shared/theming';
 
 const placement = css`
     border-radius: 1rem;
     box-sizing: border-box;
-    color: #b0e4f9;
+    color: ${colors.primary};
     font-family: 'Roboto', serif;
     font-size: 1.25rem;
     font-weight: bolder;
@@ -18,7 +19,7 @@ const placement = css`
     transition-duration: .3s;
 
     @media (min-width: 1028px) {
-        background: #b0e4f9;
+        background: ${colors.primary};
         font-size: .75rem;
         color: white;
     }
