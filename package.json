@@ -19,7 +19,6 @@
     "next": "latest",
     "next-absolute-url": "^1.2.2",
     "react": "^17.0.0",
-    "react-dom": "^16.13.1",
     "react-vis": "^1.11.7"
   },
   "license": "MIT",
