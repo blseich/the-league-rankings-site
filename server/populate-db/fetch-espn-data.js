@@ -1,4 +1,4 @@
-import fetch from '@vercel/fetch';
+import fetch from 'node-fetch';
 
 const ESPN_TEAMS_URL="https://fantasy.espn.com/apis/v3/games/ffl/seasons/2022/segments/0/leagues/1092538?view=modular&view=mTeam&view=mBoxscore&view=mMatchupScore&view=mSettings";
 
