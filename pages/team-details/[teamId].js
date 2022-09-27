@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx, css } from '@emotion/react'
 import { Fragment, useState } from 'react';
 import absoluteUrl from 'next-absolute-url';
 import { colors } from '../../shared/theming';
@@ -8,10 +8,8 @@ import PowerRankingStats from '../../client/components/power-ranking-stats';
 import VictoryStats from '../../client/components/victory-stats';
 import CoachingStats from '../../client/components/coaching-stats';
 
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import AppBar from '@material-ui/core/AppBar';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -37,8 +35,11 @@ function TabPanel(props) {
 
 const overrideMui = css`
     .MuiTabs-root {
-        background: ${colors.font};
-        color: #fff;
+        background: ${colors.secondary};
+        color: #434343;
+    }
+    .MuiTab-textColorPrimary {
+        color: #526769;
     }
     .Mui-selected {
         color: ${colors.primary};

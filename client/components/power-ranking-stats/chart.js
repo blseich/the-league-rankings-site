@@ -1,74 +1,32 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core';
-import { useState } from 'react';
-import {
-    XYPlot, LineMarkSeries, XAxis, YAxis, HorizontalGridLines, VerticalGridLines, Hint
-} from 'react-vis';
+import { jsx, css } from '@emotion/react';
+import { useMemo } from 'react';
+import { XAxis, YAxis, LineChart, Tooltip, ResponsiveContainer, Line, CartesianGrid } from 'recharts';
 import { colors } from '../../../shared/theming';
 
-const Tooltip = ({ tooltipData }) => (
-    <div css={css`
-        font-size: .75rem;
-        background: black;
-        box-sizing: border-box;
-        padding: .25rem;
-        color: white;
-    `}>
-        <p css={css`margin: 0;`}>Week: {tooltipData.x}</p>
-        <p css={css`margin: 0;`}>Ranking: {Math.abs(tooltipData.y)}</p>
-    </div>
-);
 
-const Chart = ({ weeks }) => {
-    const [ tooltipData, setTooltipData ] = useState(null);
-    const data = weeks.map(({ cumulative }) => ({
-        x: cumulative.week,
-        y: 0-cumulative.powerRanking,
-    })).sort((d1, d2) => d2.x-d1.x);;
+const PowerRankingChart = ({ weeks }) => {
+    const data =weeks.map(({ cumulative: { week, powerRanking } }) => ({
+            week,
+            powerRanking,
+        })).sort((a, b) => a.week - b.week);
     return (
-        <div css={css`
-            margin: auto;
-            padding: .5rem;
-            width: 350px;
-        `}>
-            <XYPlot
-                yDomain={[-12, -1]}
-                onMouseLeave={() => setTooltipData(null)}
-                width={350}
-                height={350}
-            >
-                <HorizontalGridLines />
-                <LineMarkSeries
-                    data={data}
-                    onNearestXY={(value) => setTooltipData(value)}
-                    lineStyle={{ stroke: colors.primary, strokeWidth: 4 }}
-                    markStyle={{ stroke: colors.secondary, fill: colors.secondary }}
-                />
-                <XAxis 
-                    tickTotal={data.length-1}
-                    style={{
-                        text: { fontSize: '1rem',  },
-                        line: { strokeWidth: 4, stroke: colors.secondary },
-                    }}
-                    title={'Week'}
-                />
-                <YAxis 
-                    tickFormat={(val) => Math.abs(val)}
-                    style={{
-                        text: { fontSize: '1rem' },
-                        line: { strokeWidth: 4, stroke: colors.secondary },
-                    }}
-                    title={'Power Ranking'}
-                />
-                {tooltipData && (
-                    <Hint value={tooltipData}>
-                        <Tooltip tooltipData={tooltipData} />
-                    </Hint>
-                )}
-            </XYPlot>
-        </div>
+        <ResponsiveContainer heighy='50%' aspect={1.25}>
+            <LineChart data={data} margin={{
+                left: 0,
+                right: 50,
+                bottom: 20,
+                top: 20
+            }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="week" tickCount={weeks.length -1}/>
+                <YAxis domain={[1, 12]} reversed={true} tickCount={12} interval="preserveStart"/>
+                <Tooltip />
+                <Line dataKey="powerRanking" stroke={colors.secondary} strokeWidth={3} dot={{ r:5 }} isAnimationActive={false} />
+            </LineChart>
+        </ResponsiveContainer>
     );
 };
 
-export default Chart;
+export default PowerRankingChart;

@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import styled from '@emotion/styled'
-import fetch from 'node-fetch';
 import absoluteUrl from 'next-absolute-url';
 import TeamCard from '../client/components/team-card';
 
